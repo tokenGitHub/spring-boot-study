@@ -1,15 +1,12 @@
 package com.hanhe.study.controller;
 
-import cn.edu.hfut.dmic.webcollector.example.TutorialCrawler;
 import com.hanhe.study.asyncTask.DoSpiderTask;
 import com.hanhe.study.asyncTask.TestTask;
-import com.hanhe.study.asyncTask.spiders.FirstSpider;
 import com.hanhe.study.domain.ExcelTestDomain;
 import com.hanhe.study.utils.ExcelUtil;
 import com.hanhe.study.utils.FilterInterface;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.util.*;
 import java.util.concurrent.Future;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Slf4j
 @Controller
