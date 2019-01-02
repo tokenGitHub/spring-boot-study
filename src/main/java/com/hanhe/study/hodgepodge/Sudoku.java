@@ -1,4 +1,4 @@
-package com.hanhe.study.Hodgepodge;
+package com.hanhe.study.hodgepodge;
 
 public class Sudoku {
     public static void run(String args[]){
