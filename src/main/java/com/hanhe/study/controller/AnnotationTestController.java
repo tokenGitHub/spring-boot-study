@@ -1,6 +1,8 @@
 package com.hanhe.study.controller;
 
-import com.hanhe.study.annotation.FirstAnnotationTest;
+import com.hanhe.study.annotation.Fruit;
+import com.hanhe.study.annotation.FruitInfoUtil;
+import com.hanhe.study.annotation.FruitName;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AnnotationTestController {
 
     @ResponseBody
-    @FirstAnnotationTest
+    @FruitName
     @GetMapping("methodAnnotation")
     public String run(){
-        return "ok";
+        return FruitInfoUtil.getFruitInfo(Fruit.class);
     }
 }
