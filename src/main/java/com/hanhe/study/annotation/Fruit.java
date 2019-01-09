@@ -6,7 +6,6 @@ public class Fruit {
     @FruitColor(fruitColor = FruitColor.Color.BLUE)
     private FruitColor.Color color;
 
-    @FruitName("apple")
     public String getName() {
         return name;
     }
