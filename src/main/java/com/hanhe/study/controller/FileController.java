@@ -67,7 +67,7 @@ public class FileController {
     @ResponseBody
     @GetMapping("parseCSV")
     public String parseCSV() throws Exception{
-        File file = new File("/var/root/Desktop/sqlResult_2212570.csv");
+        File file = new File("/var/root/Desktop/2019-01-08SqlResult.csv");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         int line = 1;
         String tempString;
@@ -86,7 +86,7 @@ public class FileController {
 
         double result = (double)retLen / (double)readLen;
 
-        return "2019-01-14 :" +
+        return "2019-01-08 :" +
                 "<br/>  日活 ： " + readLen +
                 "<br/> 新增用户 ： " + csvLen +
                 "<br/> 新增用户活跃人数 : " + retLen +
@@ -109,6 +109,21 @@ public class FileController {
             readSet.add(tempString);
             line++;
         }
+    }
+
+    @ResponseBody
+    @GetMapping("testBreakLabel")
+    public String testBreakLabel(){
+        int i = 0 ,j = 0;
+        label : for(j =0 ;j < 10 ; j++) {
+            for (i = 0; i < 10; i++) {
+                if (i == 2)
+                    break label;
+                log.info(i + "   " + j);
+            }
+        }
+        log.info(i + "   " + j + "  end");
+        return "ok";
     }
 }
 
