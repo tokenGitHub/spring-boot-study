@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Component("youzanClient")
 public  class YouzanClient {
-    private static final String CLIENT_ID = "67929aa0f0797bb762";
-    private static final String CLIENT_SECRET = "bcc104b8a39aae6fbc636363ea2a201c";
+    private static final String CLIENT_ID = "";
+    private static final String CLIENT_SECRET = "";
     private static final Long KDT_ID = 40436671L;
 
     private YZClient yzClient;
