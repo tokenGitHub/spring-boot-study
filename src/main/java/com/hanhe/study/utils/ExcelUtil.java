@@ -7,9 +7,7 @@ import jxl.write.WritableWorkbook;
 
 import javax.servlet.http.HttpServletResponse;
 import java.beans.PropertyDescriptor;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
 import java.util.List;
@@ -17,15 +15,13 @@ import java.util.List;
 public class ExcelUtil {
 
     public static void outputDetailExcel(String columns[][], List data, HttpServletResponse response, String name, FilterInterface filter) {
-        WritableWorkbook wwb;
         try {
             response.setContentType("application/vnd.ms-excel");
             response.setHeader("Content-Disposition", "attachment;filename="
                     + URLEncoder.encode(name + ".xls", "utf-8"));
 
-            wwb = Workbook.createWorkbook(response.getOutputStream());
+            WritableWorkbook wwb = Workbook.createWorkbook(response.getOutputStream());
             WritableSheet sheet = wwb.createSheet(name, 0);
-
             setColumn(columns[1], sheet);
 
             if(filter == null) {
@@ -39,31 +35,6 @@ public class ExcelUtil {
             e.printStackTrace();
         }
     }
-
-    public static OutputStream getExcelStream(String columns[][], List data, String name, FilterInterface filter, File file){
-        WritableWorkbook wwb;
-        OutputStream outputStream = null;
-        try{
-            outputStream = new FileOutputStream(file);
-            wwb = Workbook.createWorkbook(outputStream);
-            WritableSheet sheet = wwb.createSheet(name, 0);
-
-            setColumn(columns[1], sheet);
-
-            if(filter == null) {
-                setData(data, columns[0], sheet);
-            }else{
-                setData(data, columns[0], sheet, filter);
-            }
-            wwb.write();
-            wwb.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return outputStream;
-    }
-
 
     private static void setColumn(String [] column, WritableSheet sheet){
         int len = column.length;
