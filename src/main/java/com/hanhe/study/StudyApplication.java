@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @EnableScheduling
 @SpringBootApplication
 public class StudyApplication {
-
+    //https://qbgbook.gitbooks.io/  文档地址
     public static void main(String[] args) {
         SpringApplication.run(StudyApplication.class, args);
     }
