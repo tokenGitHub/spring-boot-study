@@ -3,7 +3,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Strings;
-import com.hanhe.study.controller.YouzanClient;
 import com.youzan.open.sdk.client.core.YZClient;
 
 import com.youzan.open.sdk.gen.v1_0_0.api.YouzanLogisticsOrderQuery;
@@ -26,7 +25,6 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 /**
  * @ Author     ：

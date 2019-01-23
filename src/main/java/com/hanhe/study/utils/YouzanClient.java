@@ -1,4 +1,4 @@
-package com.hanhe.study.controller;
+package com.hanhe.study.utils;
 
 import com.youzan.open.sdk.client.auth.Token;
 import com.youzan.open.sdk.client.core.DefaultYZClient;
