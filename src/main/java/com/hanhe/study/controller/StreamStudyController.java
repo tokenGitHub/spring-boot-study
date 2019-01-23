@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 @Log4j
 @Controller
 @RequestMapping("stream")
 public class StreamStudyController {
     private List<String> list = new ArrayList<>();
-    private Map<Integer, String> map = new TreeMap<>();
+    private Map<Integer, String> map = new HashMap<>();
 
     private void listInit(){
         list.clear();
@@ -73,5 +74,20 @@ public class StreamStudyController {
         return list;
     }
 
+
+    @ResponseBody
+    @GetMapping("map")
+    public Object map(){
+        mapInit();
+//        map.put(3,  map.getOrDefault(3,  "defaultValue"));
+//        map.put(23, map.getOrDefault(23, "defaultValue"));
+        map.forEach((k, v) -> log.info("  key : " + k + " value : " + v));
+        map.putIfAbsent(3 ,"absent");
+        map.putIfAbsent(23 ,"absent");
+
+        list.stream().map(String::length).forEach(log::info);
+
+        return map;
+    }
 
 }

@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 public interface FilterInterface {
     String filter(String column, Object data);
 
+    //把 Object 转化为 json 字符串
     static String toString(Object object) throws Exception{
         Class clazz = object.getClass();
         String name = clazz.getName();

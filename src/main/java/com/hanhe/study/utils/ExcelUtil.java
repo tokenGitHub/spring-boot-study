@@ -10,7 +10,10 @@ import java.beans.PropertyDescriptor;
 import java.io.*;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ExcelUtil {
 
@@ -36,35 +39,26 @@ public class ExcelUtil {
         }
     }
 
-    private static void setColumn(String [] column, WritableSheet sheet){
-        int len = column.length;
-        try {
-            for (int i = 0; i < len; i++) {
-                sheet.addCell((new Label(i, 0, column[i])));
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+    private static void setColumn(String [] column, WritableSheet sheet) throws Exception{
+        for (int i = 0; i < column.length; i++) {
+            sheet.addCell((new Label(i, 0, column[i])));
         }
     }
 
-    private static void setData(List list, String column[], WritableSheet sheet){
+    private static void setData(List list, String column[], WritableSheet sheet) throws Exception{
         Object object = list.get(0);
         Class clazz = object.getClass();
         int len = column.length;
 
-        try {
-            for (int j = 0; j < len; j++) {
-                PropertyDescriptor propertyDescriptor = new PropertyDescriptor(column[j], clazz);
-                Method method = propertyDescriptor.getReadMethod();
+        for (int j = 0; j < len; j++) {
+            PropertyDescriptor propertyDescriptor = new PropertyDescriptor(column[j], clazz);
+            Method method = propertyDescriptor.getReadMethod();
 
-                for (int i = 0; i < list.size(); i++) {
-                    Object item = list.get(i);
-                    Object data = method.invoke(item);
-                    sheet.addCell(new Label(j, i + 1,  data.toString()));
-                }
+            for (int i = 0; i < list.size(); i++) {
+                Object item = list.get(i);
+                Object data = method.invoke(item);
+                sheet.addCell(new Label(j, i + 1,  data.toString()));
             }
-        }catch (Exception e){
-            e.printStackTrace();
         }
     }
 
@@ -80,7 +74,7 @@ public class ExcelUtil {
             for (int i = 0; i < list.size(); i++) {
                 Object item = list.get(i);
                 Object data = method.invoke(item);
-                sheet.addCell(new Label(j, i + 1, filter.filter(column[j], data)));
+                sheet.addCell(new Label(j, i + 1, filter.filter(column[j], data.toString())));
             }
         }
     }
