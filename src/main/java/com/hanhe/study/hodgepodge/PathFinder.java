@@ -3,7 +3,7 @@ package com.hanhe.study.hodgepodge;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class pathFinder {
+public class PathFinder {
     public static void run(String args[]) {
         String a = ".W.\n" +
                 ".W.\n" +
